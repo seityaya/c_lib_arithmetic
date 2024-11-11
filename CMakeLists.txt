@@ -9,11 +9,9 @@ cmake_minimum_required(VERSION 3.0)
 
 project(yaya_logtime_project)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wpedantic -Werror")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra  -Werror -std=gnu2x")
 
 add_subdirectory(core)
 add_subdirectory(test)
-add_subdirectory(using)
 
-add_subdirectory(libs/c_lib_memory/core)
-add_subdirectory(libs/c_lib_systime/core)
+add_subdirectory(libs/c_lib_testing/core/)

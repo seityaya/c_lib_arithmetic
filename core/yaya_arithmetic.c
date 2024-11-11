@@ -65,7 +65,7 @@ umax_t ___isqrt(umax_t x) {
 
     umax_t r = 0;
     while (q > 1) {
-        umax_t t = 0;
+        imax_t t = 0;
         q >>= 2;
         t = x - r - q;
         r >>= 1;
