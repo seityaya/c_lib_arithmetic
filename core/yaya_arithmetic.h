@@ -542,10 +542,10 @@ enum fp_class_e {
     BLOCK(                                                                                                                                           \
         _Generic((x),                                                                                                                                \
             char         : ___copysign_char,                                                                                                         \
-            is8_t        : ___copysign_is8 ,                                                                                                         \
-            is16_t       : ___copysign_is16,                                                                                                         \
-            is32_t       : ___copysign_is32,                                                                                                         \
-            is64_t       : ___copysign_is64,                                                                                                         \
+            ss8_t        : ___copysign_ss8 ,                                                                                                         \
+            ss16_t       : ___copysign_ss16,                                                                                                         \
+            ss32_t       : ___copysign_ss32,                                                                                                         \
+            ss64_t       : ___copysign_ss64,                                                                                                         \
             us8_t        : ___copysign_us8 ,                                                                                                         \
             us16_t       : ___copysign_us16,                                                                                                         \
             us32_t       : ___copysign_us32,                                                                                                         \

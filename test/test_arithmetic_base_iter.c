@@ -15,11 +15,11 @@ UT_GROUP_BEG(iter) {
             UT_ASSERT_NUM_EQ(u8_c(   0), num_prev(u8_c(   1)));
             UT_ASSERT_NUM_EQ(u8_c(   0), num_prev(u8_c(   0)));
 
-            UT_ASSERT_NUM_EQ(i8_c(   1), num_prev(i8_c(   2)));
-            UT_ASSERT_NUM_EQ(i8_c(   0), num_prev(i8_c(   1)));
-            UT_ASSERT_NUM_EQ(i8_c(  -1), num_prev(i8_c(   0)));
-            UT_ASSERT_NUM_EQ(i8_c(-128), num_prev(i8_c(-128)));
-            UT_ASSERT_NUM_EQ(i8_c( 126), num_prev(i8_c( 127)));
+            UT_ASSERT_NUM_EQ(s8_c(1), num_prev(s8_c(2)));
+            UT_ASSERT_NUM_EQ(s8_c(0), num_prev(s8_c(1)));
+            UT_ASSERT_NUM_EQ(s8_c(-1), num_prev(s8_c(0)));
+            UT_ASSERT_NUM_EQ(s8_c(-128), num_prev(s8_c(-128)));
+            UT_ASSERT_NUM_EQ(s8_c(126), num_prev(s8_c(127)));
         } UT_GROUP_END;
 
         UT_GROUP_BEG(num_next_integer) {
@@ -27,26 +27,26 @@ UT_GROUP_BEG(iter) {
             UT_ASSERT_NUM_EQ(u8_c(   1), num_next(u8_c(   0)));
             UT_ASSERT_NUM_EQ(u8_c(   2), num_next(u8_c(   1)));
 
-            UT_ASSERT_NUM_EQ(i8_c(   0), num_next(i8_c(  -1)));
-            UT_ASSERT_NUM_EQ(i8_c(   1), num_next(i8_c(   0)));
-            UT_ASSERT_NUM_EQ(i8_c(   2), num_next(i8_c(   1)));
-            UT_ASSERT_NUM_EQ(i8_c(-127), num_next(i8_c(-128)));
-            UT_ASSERT_NUM_EQ(i8_c( 127), num_next(i8_c( 127)));
+            UT_ASSERT_NUM_EQ(s8_c(0), num_next(s8_c(-1)));
+            UT_ASSERT_NUM_EQ(s8_c(1), num_next(s8_c(0)));
+            UT_ASSERT_NUM_EQ(s8_c(2), num_next(s8_c(1)));
+            UT_ASSERT_NUM_EQ(s8_c(-127), num_next(s8_c(-128)));
+            UT_ASSERT_NUM_EQ(s8_c(127), num_next(s8_c(127)));
         } UT_GROUP_END;
 
         UT_GROUP_BEG(num_after_integer) {
             UT_ASSERT_NUM_EQ(u8_c(   0), num_appr(u8_c(   0), u8_c(    0)));
             UT_ASSERT_NUM_EQ(u8_c(   1), num_appr(u8_c(   1), u8_c(    1)));
 
-            UT_ASSERT_NUM_EQ(i8_c(   1), num_appr(i8_c(   0), i8_c(    3)));
-            UT_ASSERT_NUM_EQ(i8_c(   2), num_appr(i8_c(   1), i8_c(    3)));
-            UT_ASSERT_NUM_EQ(i8_c(   3), num_appr(i8_c(   2), i8_c(    3)));
-            UT_ASSERT_NUM_EQ(i8_c(   3), num_appr(i8_c(   3), i8_c(    3)));
+            UT_ASSERT_NUM_EQ(s8_c(1), num_appr(s8_c(0), s8_c(3)));
+            UT_ASSERT_NUM_EQ(s8_c(2), num_appr(s8_c(1), s8_c(3)));
+            UT_ASSERT_NUM_EQ(s8_c(3), num_appr(s8_c(2), s8_c(3)));
+            UT_ASSERT_NUM_EQ(s8_c(3), num_appr(s8_c(3), s8_c(3)));
 
-            UT_ASSERT_NUM_EQ(i8_c(  -1), num_appr(i8_c(   0), i8_c(   -3)));
-            UT_ASSERT_NUM_EQ(i8_c(  -2), num_appr(i8_c(  -1), i8_c(   -3)));
-            UT_ASSERT_NUM_EQ(i8_c(  -3), num_appr(i8_c(  -2), i8_c(   -3)));
-            UT_ASSERT_NUM_EQ(i8_c(  -3), num_appr(i8_c(  -3), i8_c(   -3)));
+            UT_ASSERT_NUM_EQ(s8_c(-1), num_appr(s8_c(0), s8_c(-3)));
+            UT_ASSERT_NUM_EQ(s8_c(-2), num_appr(s8_c(-1), s8_c(-3)));
+            UT_ASSERT_NUM_EQ(s8_c(-3), num_appr(s8_c(-2), s8_c(-3)));
+            UT_ASSERT_NUM_EQ(s8_c(-3), num_appr(s8_c(-3), s8_c(-3)));
         } UT_GROUP_END;
 
         UT_GROUP_BEG(num_prev_next_float) {

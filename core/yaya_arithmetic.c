@@ -67,10 +67,10 @@ umax_t ___isqrt(umax_t x) {
     while (q > 1) {
         smax_t t = 0;
         q >>= 2;
-        t = x - r - q;
+        t = smax_c(x) - smax_c(r) - smax_c(q);  // TODO ?
         r >>= 1;
         if (t >= 0) {
-            x = t;
+            x = umax_c(t);
             r += q;
         }
     }
@@ -337,19 +337,19 @@ inline us32_t ___pow_us32(us32_t x, us32_t p){ typeof(x) __x = 1; typeof(p) __p 
 inline us64_t ___pow_us64(us64_t x, us64_t p){ typeof(x) __x = 1; typeof(p) __p = p; while(__p--){ __as(__x, __x * x); } return __x; }
 
 inline char   ___copysign_char(char   r, char   s){ (void)(r); return ((s) > 0) ? __to_pos(one(s)) : (((s) < 0) ? __to_neg(one(s)) : zero(s)); }
-inline ss8_t ___copysign_is8(ss8_t r, ss8_t s) {
+inline ss8_t ___copysign_ss8(ss8_t r, ss8_t s) {
     (void)(r);
     return ((s) > 0) ? __to_pos(one(s)) : (((s) < 0) ? __to_neg(one(s)) : zero(s));
 }
-inline ss16_t ___copysign_is16(ss16_t r, ss16_t s) {
+inline ss16_t ___copysign_ss16(ss16_t r, ss16_t s) {
     (void)(r);
     return ((s) > 0) ? __to_pos(one(s)) : (((s) < 0) ? __to_neg(one(s)) : zero(s));
 }
-inline ss32_t ___copysign_is32(ss32_t r, ss32_t s) {
+inline ss32_t ___copysign_ss32(ss32_t r, ss32_t s) {
     (void)(r);
     return ((s) > 0) ? __to_pos(one(s)) : (((s) < 0) ? __to_neg(one(s)) : zero(s));
 }
-inline ss64_t ___copysign_is64(ss64_t r, ss64_t s) {
+inline ss64_t ___copysign_ss64(ss64_t r, ss64_t s) {
     (void)(r);
     return ((s) > 0) ? __to_pos(one(s)) : (((s) < 0) ? __to_neg(one(s)) : zero(s));
 }

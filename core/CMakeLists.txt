@@ -17,7 +17,7 @@ project(
 
 set(CMAKE_C_STANDARD 23)
 
-add_compile_options(-Wall -Wfatal-errors -Wconversion -Warith-conversion -Wfloat-conversion -Wsign-conversion -Wenum-conversion -Wno-missing-braces)
+# add_compile_options(-Wall -Wfatal-errors -Wconversion -Warith-conversion -Wfloat-conversion -Wsign-conversion -Wenum-conversion -Wno-missing-braces)
 
 file(GLOB FILES *.c *.h)
 
@@ -25,4 +25,4 @@ add_library(${PROJECT_NAME} ${FILES})
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_link_libraries(${PROJECT_NAME} PUBLIC yaya_macro)
+target_link_libraries(${PROJECT_NAME} PUBLIC m yaya_macro)

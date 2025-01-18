@@ -12,24 +12,24 @@
 UT_FUNC_GEN(test_arithmetic_progresion) {
     UT_GROUP_BEG(progresion) {
         UT_GROUP_BEG(arithmetic) {
-            imax_t a = 0;
-            imax_t b = 2;
+            smax_t a = 0;
+            smax_t b = 2;
             UT_GROUP_BEG(get) {
-                UT_ASSERT_NUM_EQ(imax_c(-2), progresion_arithmetic(a, b, -1));
-                UT_ASSERT_NUM_EQ(imax_c( 0), progresion_arithmetic(a, b,  0));
-                UT_ASSERT_NUM_EQ(imax_c( 2), progresion_arithmetic(a, b,  1));
+                UT_ASSERT_NUM_EQ(smax_c(-2), progresion_arithmetic(a, b, -1));
+                UT_ASSERT_NUM_EQ(smax_c(0), progresion_arithmetic(a, b, 0));
+                UT_ASSERT_NUM_EQ(smax_c(2), progresion_arithmetic(a, b, 1));
 
-                UT_ASSERT_NUM_NQ(imax_c(-1), progresion_arithmetic(a, b,  0));
-                UT_ASSERT_NUM_NQ(imax_c( 1), progresion_arithmetic(a, b,  0));
+                UT_ASSERT_NUM_NQ(smax_c(-1), progresion_arithmetic(a, b, 0));
+                UT_ASSERT_NUM_NQ(smax_c(1), progresion_arithmetic(a, b, 0));
             } UT_GROUP_END;
 
             UT_GROUP_BEG(is) {
-                UT_ASSERT_BOOL_TR(is_progresion_arithmetic(a, b, imax_c(-2)));
-                UT_ASSERT_BOOL_TR(is_progresion_arithmetic(a, b, imax_c( 0)));
-                UT_ASSERT_BOOL_TR(is_progresion_arithmetic(a, b, imax_c( 2)));
+                UT_ASSERT_BOOL_TR(is_progresion_arithmetic(a, b, smax_c(-2)));
+                UT_ASSERT_BOOL_TR(is_progresion_arithmetic(a, b, smax_c(0)));
+                UT_ASSERT_BOOL_TR(is_progresion_arithmetic(a, b, smax_c(2)));
 
-                UT_ASSERT_BOOL_FL(is_progresion_arithmetic(a, b, imax_c(-1)));
-                UT_ASSERT_BOOL_FL(is_progresion_arithmetic(a, b, imax_c( 1)));
+                UT_ASSERT_BOOL_FL(is_progresion_arithmetic(a, b, smax_c(-1)));
+                UT_ASSERT_BOOL_FL(is_progresion_arithmetic(a, b, smax_c(1)));
 
                 UT_ASSERT_BOOL_TR(is_progresion_arithmetic(a, b, progresion_arithmetic(a, b, 0)));
                 UT_ASSERT_BOOL_TR(is_progresion_arithmetic(a, b, progresion_arithmetic(a, b, 1)));

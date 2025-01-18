@@ -12,12 +12,12 @@ UT_FUNC_GEN(test_arithmetic_base_inverse) {
     UT_GROUP_BEG(inverse_element) {
         UT_GROUP_BEG(additive) {
             UT_GROUP_BEG(is_inv_add) {
-                UT_ASSERT_BOOL_TR(is_inv_add( i8_c(  -1)));
-                UT_ASSERT_BOOL_TR(is_inv_add( i8_c(   0)));
-                UT_ASSERT_BOOL_TR(is_inv_add( i8_c(   1)));
+                UT_ASSERT_BOOL_TR(is_inv_add(s8_c(-1)));
+                UT_ASSERT_BOOL_TR(is_inv_add(s8_c(0)));
+                UT_ASSERT_BOOL_TR(is_inv_add(s8_c(1)));
 
-                UT_ASSERT_BOOL_TR(is_inv_add( i8_c(-127)));
-                UT_ASSERT_BOOL_FL(is_inv_add( i8_c(-128)));
+                UT_ASSERT_BOOL_TR(is_inv_add(s8_c(-127)));
+                UT_ASSERT_BOOL_FL(is_inv_add(s8_c(-128)));
 
                 UT_ASSERT_BOOL_FL(is_inv_add( u8_c(  -1)));
                 UT_ASSERT_BOOL_TR(is_inv_add( u8_c(   0)));
@@ -32,12 +32,12 @@ UT_FUNC_GEN(test_arithmetic_base_inverse) {
             UT_GROUP_END;
 
             UT_GROUP_BEG(inv_add) {
-                UT_ASSERT_NUM_EQ( i8_c(   1), inv_add( i8_c(  -1)));
-                UT_ASSERT_NUM_EQ( i8_c(   0), inv_add( i8_c(   0)));
-                UT_ASSERT_NUM_EQ( i8_c(  -1), inv_add( i8_c(   1)));
+                UT_ASSERT_NUM_EQ(s8_c(1), inv_add(s8_c(-1)));
+                UT_ASSERT_NUM_EQ(s8_c(0), inv_add(s8_c(0)));
+                UT_ASSERT_NUM_EQ(s8_c(-1), inv_add(s8_c(1)));
 
-                UT_ASSERT_NUM_EQ( i8_c( 127), inv_add( i8_c(-127)));
-                UT_ASSERT_NUM_EQ( i8_c(-128), inv_add( i8_c(-128)));
+                UT_ASSERT_NUM_EQ(s8_c(127), inv_add(s8_c(-127)));
+                UT_ASSERT_NUM_EQ(s8_c(-128), inv_add(s8_c(-128)));
 
                 UT_ASSERT_NUM_EQ( u8_c(   1), inv_add( u8_c(  -1)));
                 UT_ASSERT_NUM_EQ( u8_c(   0), inv_add( u8_c(   0)));
@@ -52,24 +52,24 @@ UT_FUNC_GEN(test_arithmetic_base_inverse) {
             UT_GROUP_END;
 
             UT_GROUP_BEG(inv_add_chk) {
-                is8_t res_i = 0;
+                ss8_t res_i = 0;
                 f32_t res_f = 0;
-                UT_ASSERT_BOOL_TR(inv_add_chk(res_i, i8_c(-1)));
-                UT_ASSERT_NUM_EQ(res_i, i8_c(1));
+                UT_ASSERT_BOOL_TR(inv_add_chk(res_i, s8_c(-1)));
+                UT_ASSERT_NUM_EQ(res_i, s8_c(1));
 
-                UT_ASSERT_BOOL_TR(inv_add_chk(res_i, i8_c(0)));
-                UT_ASSERT_NUM_EQ(res_i, i8_c(0));
+                UT_ASSERT_BOOL_TR(inv_add_chk(res_i, s8_c(0)));
+                UT_ASSERT_NUM_EQ(res_i, s8_c(0));
 
-                UT_ASSERT_BOOL_TR(inv_add_chk(res_i, i8_c(1)));
-                UT_ASSERT_NUM_EQ(res_i, i8_c(-1));
-
-                res_i = 33;
-                UT_ASSERT_BOOL_TR(inv_add_chk(res_i, i8_c(-127)));
-                UT_ASSERT_NUM_EQ(res_i, i8_c(127));
+                UT_ASSERT_BOOL_TR(inv_add_chk(res_i, s8_c(1)));
+                UT_ASSERT_NUM_EQ(res_i, s8_c(-1));
 
                 res_i = 33;
-                UT_ASSERT_BOOL_FL(inv_add_chk(res_i, i8_c(-128)));
-                UT_ASSERT_NUM_EQ(res_i, i8_c(33));
+                UT_ASSERT_BOOL_TR(inv_add_chk(res_i, s8_c(-127)));
+                UT_ASSERT_NUM_EQ(res_i, s8_c(127));
+
+                res_i = 33;
+                UT_ASSERT_BOOL_FL(inv_add_chk(res_i, s8_c(-128)));
+                UT_ASSERT_NUM_EQ(res_i, s8_c(33));
 
                 UT_ASSERT_BOOL_TR(inv_add_chk(res_f, f32_c(1.1)));
                 UT_ASSERT_FLT_EQ(res_f, f32_c(-1.1));

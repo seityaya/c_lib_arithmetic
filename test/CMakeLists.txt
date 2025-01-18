@@ -11,16 +11,8 @@ project(define_test)
 
 set(CMAKE_C_STANDARD 11)
 
-file(GLOB FILES
-    *.c
-    *.h
-    test_arithmetic/*.c
-    test_bit/*.c
-)
+file(GLOB FILES *.c *.h)
 
-add_executable(
-    ${PROJECT_NAME}
-    ${FILES}
-)
+add_executable(${PROJECT_NAME} ${FILES})
 
 target_link_libraries(${PROJECT_NAME} PUBLIC yaya_testing)

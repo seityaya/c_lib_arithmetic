@@ -11,7 +11,7 @@
 
 UT_FUNC_GEN(test_arithmetic_base_math_chk) {
     UT_GROUP_BEG(math) {
-        is8_t  r_i = 0;
+        ss8_t r_i  = 0;
         us8_t  r_s = 0;
         fmax_t r_f = 0;
 
@@ -29,9 +29,9 @@ UT_FUNC_GEN(test_arithmetic_base_math_chk) {
                         flag = true;
                     }
 
-                    is8_t a = (is8_t)(i);
-                    is8_t b = (is8_t)(j);
-                    is8_t r = 0;
+                    ss8_t a = (ss8_t)(i);
+                    ss8_t b = (ss8_t)(j);
+                    ss8_t r = 0;
 
                     if(flag != sum_chk(r, a, b)){
                         k++;
@@ -70,19 +70,39 @@ UT_FUNC_GEN(test_arithmetic_base_math_chk) {
             }
             UT_ASSERT_NUM_EQ(k, 0);
 
-            r_i = 0;  UT_ASSERT_BOOL_FL(sum_chk(r_i, i8_c(   0), i8_c( 127))); UT_ASSERT_NUM_EQ(i8_c( 127), r_i);
-            r_i = 0;  UT_ASSERT_BOOL_FL(sum_chk(r_i, i8_c(   0), i8_c(-128))); UT_ASSERT_NUM_EQ(i8_c(-128), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_FL(sum_chk(r_i, s8_c(0), s8_c(127)));
+            UT_ASSERT_NUM_EQ(s8_c(127), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_FL(sum_chk(r_i, s8_c(0), s8_c(-128)));
+            UT_ASSERT_NUM_EQ(s8_c(-128), r_i);
 
-            r_i = 0;  UT_ASSERT_BOOL_FL(sum_chk(r_i, i8_c( 127), i8_c(   0))); UT_ASSERT_NUM_EQ(i8_c( 127), r_i);
-            r_i = 0;  UT_ASSERT_BOOL_FL(sum_chk(r_i, i8_c(-128), i8_c(   0))); UT_ASSERT_NUM_EQ(i8_c(-128), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_FL(sum_chk(r_i, s8_c(127), s8_c(0)));
+            UT_ASSERT_NUM_EQ(s8_c(127), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_FL(sum_chk(r_i, s8_c(-128), s8_c(0)));
+            UT_ASSERT_NUM_EQ(s8_c(-128), r_i);
 
-            r_i = 0;  UT_ASSERT_BOOL_FL(sum_chk(r_i, i8_c(   1), i8_c(   1))); UT_ASSERT_NUM_EQ(i8_c(   2), r_i);
-            r_i = 0;  UT_ASSERT_BOOL_FL(sum_chk(r_i, i8_c(  -1), i8_c(   1))); UT_ASSERT_NUM_EQ(i8_c(   0), r_i);
-            r_i = 0;  UT_ASSERT_BOOL_FL(sum_chk(r_i, i8_c(   1), i8_c(  -1))); UT_ASSERT_NUM_EQ(i8_c(   0), r_i);
-            r_i = 0;  UT_ASSERT_BOOL_FL(sum_chk(r_i, i8_c(  -1), i8_c(  -1))); UT_ASSERT_NUM_EQ(i8_c(  -2), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_FL(sum_chk(r_i, s8_c(1), s8_c(1)));
+            UT_ASSERT_NUM_EQ(s8_c(2), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_FL(sum_chk(r_i, s8_c(-1), s8_c(1)));
+            UT_ASSERT_NUM_EQ(s8_c(0), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_FL(sum_chk(r_i, s8_c(1), s8_c(-1)));
+            UT_ASSERT_NUM_EQ(s8_c(0), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_FL(sum_chk(r_i, s8_c(-1), s8_c(-1)));
+            UT_ASSERT_NUM_EQ(s8_c(-2), r_i);
 
-            r_i = 0;  UT_ASSERT_BOOL_TR(sum_chk(r_i, i8_c(   1), i8_c( 127))); UT_ASSERT_NUM_EQ(i8_c(   0), r_i);
-            r_i = 0;  UT_ASSERT_BOOL_TR(sum_chk(r_i, i8_c(  -1), i8_c(-128))); UT_ASSERT_NUM_EQ(i8_c(   0), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_TR(sum_chk(r_i, s8_c(1), s8_c(127)));
+            UT_ASSERT_NUM_EQ(s8_c(0), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_TR(sum_chk(r_i, s8_c(-1), s8_c(-128)));
+            UT_ASSERT_NUM_EQ(s8_c(0), r_i);
 
             r_s = 0;  UT_ASSERT_BOOL_FL(sum_chk(r_s, u8_c(   1), u8_c(   1))); UT_ASSERT_NUM_EQ(u8_c(   2), r_s);
             r_s = 0;  UT_ASSERT_BOOL_FL(sum_chk(r_s, u8_c(   0), u8_c( 255))); UT_ASSERT_NUM_EQ(u8_c( 255), r_s);
@@ -100,10 +120,9 @@ UT_FUNC_GEN(test_arithmetic_base_math_chk) {
                         flag = true;
                     }
 
-                    is8_t a = (is8_t)(i);
-                    is8_t b = (is8_t)(j);
-                    is8_t r = 0;
-
+                    ss8_t a = (ss8_t)(i);
+                    ss8_t b = (ss8_t)(j);
+                    ss8_t r = 0;
 
                     if(flag != dif_chk(r, a, b)){
                         k++;
@@ -143,23 +162,49 @@ UT_FUNC_GEN(test_arithmetic_base_math_chk) {
             }
             UT_ASSERT_NUM_EQ(k, 0);
 
-            r_i = 0; UT_ASSERT_BOOL_FL(dif_chk(r_i, i8_c(   0), i8_c( 127))); UT_ASSERT_NUM_EQ(i8_c(-127), r_i);
-            r_i = 0; UT_ASSERT_BOOL_FL(dif_chk(r_i, i8_c( 127), i8_c(   0))); UT_ASSERT_NUM_EQ(i8_c( 127), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_FL(dif_chk(r_i, s8_c(0), s8_c(127)));
+            UT_ASSERT_NUM_EQ(s8_c(-127), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_FL(dif_chk(r_i, s8_c(127), s8_c(0)));
+            UT_ASSERT_NUM_EQ(s8_c(127), r_i);
 
-            r_i = 0; UT_ASSERT_BOOL_FL(dif_chk(r_i, i8_c(-128), i8_c(   0))); UT_ASSERT_NUM_EQ(i8_c(-128), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_FL(dif_chk(r_i, s8_c(-128), s8_c(0)));
+            UT_ASSERT_NUM_EQ(s8_c(-128), r_i);
 
-            r_i = 0; UT_ASSERT_BOOL_FL(dif_chk(r_i, i8_c(   1), i8_c(   1))); UT_ASSERT_NUM_EQ(i8_c(   0), r_i);
-            r_i = 0; UT_ASSERT_BOOL_FL(dif_chk(r_i, i8_c(  -1), i8_c(   1))); UT_ASSERT_NUM_EQ(i8_c(  -2), r_i);
-            r_i = 0; UT_ASSERT_BOOL_FL(dif_chk(r_i, i8_c(   1), i8_c(  -1))); UT_ASSERT_NUM_EQ(i8_c(  +2), r_i);
-            r_i = 0; UT_ASSERT_BOOL_FL(dif_chk(r_i, i8_c(  -1), i8_c(  -1))); UT_ASSERT_NUM_EQ(i8_c(   0), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_FL(dif_chk(r_i, s8_c(1), s8_c(1)));
+            UT_ASSERT_NUM_EQ(s8_c(0), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_FL(dif_chk(r_i, s8_c(-1), s8_c(1)));
+            UT_ASSERT_NUM_EQ(s8_c(-2), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_FL(dif_chk(r_i, s8_c(1), s8_c(-1)));
+            UT_ASSERT_NUM_EQ(s8_c(+2), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_FL(dif_chk(r_i, s8_c(-1), s8_c(-1)));
+            UT_ASSERT_NUM_EQ(s8_c(0), r_i);
 
-            r_i = 0; UT_ASSERT_BOOL_FL(dif_chk(r_i, i8_c(  -1), i8_c( 127))); UT_ASSERT_NUM_EQ(i8_c(-128), r_i);
-            r_i = 0; UT_ASSERT_BOOL_FL(dif_chk(r_i, i8_c(  -1), i8_c(-128))); UT_ASSERT_NUM_EQ(i8_c( 127), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_FL(dif_chk(r_i, s8_c(-1), s8_c(127)));
+            UT_ASSERT_NUM_EQ(s8_c(-128), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_FL(dif_chk(r_i, s8_c(-1), s8_c(-128)));
+            UT_ASSERT_NUM_EQ(s8_c(127), r_i);
 
-            r_i = 0; UT_ASSERT_BOOL_TR(dif_chk(r_i, i8_c(   0), i8_c(-128))); UT_ASSERT_NUM_EQ(i8_c(   0), r_i);
-            r_i = 0; UT_ASSERT_BOOL_TR(dif_chk(r_i, i8_c(-128), i8_c(   1))); UT_ASSERT_NUM_EQ(i8_c(   0), r_i);
-            r_i = 0; UT_ASSERT_BOOL_TR(dif_chk(r_i, i8_c(   1), i8_c(-128))); UT_ASSERT_NUM_EQ(i8_c(   0), r_i);
-            r_i = 0; UT_ASSERT_BOOL_TR(dif_chk(r_i, i8_c( 127), i8_c(  -1))); UT_ASSERT_NUM_EQ(i8_c(   0), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_TR(dif_chk(r_i, s8_c(0), s8_c(-128)));
+            UT_ASSERT_NUM_EQ(s8_c(0), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_TR(dif_chk(r_i, s8_c(-128), s8_c(1)));
+            UT_ASSERT_NUM_EQ(s8_c(0), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_TR(dif_chk(r_i, s8_c(1), s8_c(-128)));
+            UT_ASSERT_NUM_EQ(s8_c(0), r_i);
+            r_i = 0;
+            UT_ASSERT_BOOL_TR(dif_chk(r_i, s8_c(127), s8_c(-1)));
+            UT_ASSERT_NUM_EQ(s8_c(0), r_i);
 
             r_s = 0; UT_ASSERT_BOOL_FL(dif_chk(r_s, u8_c(   1), u8_c(   1))); UT_ASSERT_NUM_EQ(u8_c(   0), r_s);
             r_s = 0; UT_ASSERT_BOOL_TR(dif_chk(r_s, u8_c(   0), u8_c(   1))); UT_ASSERT_NUM_EQ(u8_c(   0), r_s);
@@ -177,10 +222,9 @@ UT_FUNC_GEN(test_arithmetic_base_math_chk) {
                         flag = true;
                     }
 
-                    is8_t a = (is8_t)(i);
-                    is8_t b = (is8_t)(j);
-                    is8_t r = 0;
-
+                    ss8_t a = (ss8_t)(i);
+                    ss8_t b = (ss8_t)(j);
+                    ss8_t r = 0;
 
                     if(flag != mul_chk(r, a, b)){
                         k++;
@@ -237,10 +281,9 @@ UT_FUNC_GEN(test_arithmetic_base_math_chk) {
                         flag = true;
                     }
 
-                    is8_t a = (is8_t)(i);
-                    is8_t b = (is8_t)(j);
-                    is8_t r = 0;
-
+                    ss8_t a = (ss8_t)(i);
+                    ss8_t b = (ss8_t)(j);
+                    ss8_t r = 0;
 
                     if(flag != div_chk(r, a, b)){
                         k++;
@@ -304,10 +347,9 @@ UT_FUNC_GEN(test_arithmetic_base_math_chk) {
                         flag = true;
                     }
 
-                    is8_t a = (is8_t)(i);
-                    is8_t b = (is8_t)(j);
-                    is8_t r = 0;
-
+                    ss8_t a = (ss8_t)(i);
+                    ss8_t b = (ss8_t)(j);
+                    ss8_t r = 0;
 
                     if(flag != mod_chk(r, a, b)){
                         k++;
@@ -371,10 +413,9 @@ UT_FUNC_GEN(test_arithmetic_base_math_chk) {
                         flag = true;
                     }
 
-                    is8_t a = (is8_t)(i);
-                    is8_t b = (is8_t)(j);
-                    is8_t r = 0;
-
+                    ss8_t a = (ss8_t)(i);
+                    ss8_t b = (ss8_t)(j);
+                    ss8_t r = 0;
 
                     if(flag != qut_chk(r, a, b)){
                         k++;

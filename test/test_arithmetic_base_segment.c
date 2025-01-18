@@ -11,8 +11,8 @@
 UT_FUNC_GEN(test_arithmetic_base_segment) {
     UT_GROUP_BEG(segment) {
         UT_GROUP_BEG(get_int) {
-            UT_ASSERT_NUM_EQ(+2, get_int(i8_c(+2)));
-            UT_ASSERT_NUM_EQ(-2, get_int(i8_c(-2)));
+            UT_ASSERT_NUM_EQ(+2, get_int(s8_c(+2)));
+            UT_ASSERT_NUM_EQ(-2, get_int(s8_c(-2)));
 
             UT_ASSERT_FLT_EQ(2.0, get_int(2.1));
             UT_ASSERT_FLT_EQ(-2.0, get_int(-2.1));
@@ -27,10 +27,10 @@ UT_FUNC_GEN(test_arithmetic_base_segment) {
             UT_ASSERT_NUM_EQ(UINT_MAX, get_int(UINT_MAX));
 
             UT_ASSERT_TYP_EQ(umax_c(0), get_int((umax_t)(-1.1)));
-            UT_ASSERT_TYP_EQ(imax_c(0), get_int((imax_t)(-1.1)));
+            UT_ASSERT_TYP_EQ(smax_c(0), get_int((smax_t)(-1.1)));
 
-            UT_ASSERT_TYP_NQ(imax_c(0), get_int((umax_t)(-1.1)));
-            UT_ASSERT_TYP_NQ(umax_c(0), get_int((imax_t)(-1.1)));
+            UT_ASSERT_TYP_NQ(smax_c(0), get_int((umax_t)(-1.1)));
+            UT_ASSERT_TYP_NQ(umax_c(0), get_int((smax_t)(-1.1)));
         }
         UT_GROUP_END;
 
@@ -70,8 +70,8 @@ UT_FUNC_GEN(test_arithmetic_base_segment) {
     UT_GROUP_END;
 
     UT_GROUP_BEG(decomposition) {
-        is8_t a = 10;
-        is8_t A = -10;
+        ss8_t a = 10;
+        ss8_t A = -10;
 
         int b = 20;
         int B = -20;
@@ -86,8 +86,8 @@ UT_FUNC_GEN(test_arithmetic_base_segment) {
         f128_t Z = f128_c(-58987.25);
 
         UT_GROUP_BEG(get_sign) {
-            UT_ASSERT_NUM_EQ(i8_c(+1), get_sign(a));
-            UT_ASSERT_NUM_EQ(i8_c(-1), get_sign(A));
+            UT_ASSERT_NUM_EQ(s8_c(+1), get_sign(a));
+            UT_ASSERT_NUM_EQ(s8_c(-1), get_sign(A));
 
             UT_ASSERT_NUM_EQ(+1, get_sign(b));
             UT_ASSERT_NUM_EQ(-1, get_sign(B));
@@ -101,11 +101,11 @@ UT_FUNC_GEN(test_arithmetic_base_segment) {
             UT_ASSERT_FLT_EQ(f128_c(+1), get_sign(z));
             UT_ASSERT_FLT_EQ(f128_c(-1), get_sign(Z));
 
-            UT_ASSERT_NUM_EQ(i8_c(+1), get_sign(i8_c(1)));
-            UT_ASSERT_NUM_EQ(i8_c(+1), get_sign(i8_c(2)));
-            UT_ASSERT_NUM_EQ(i8_c(-1), get_sign(i8_c(-1)));
-            UT_ASSERT_NUM_EQ(i8_c(-1), get_sign(i8_c(-2)));
-            UT_ASSERT_NUM_EQ(i8_c(0), get_sign(i8_c(0)));
+            UT_ASSERT_NUM_EQ(s8_c(+1), get_sign(s8_c(1)));
+            UT_ASSERT_NUM_EQ(s8_c(+1), get_sign(s8_c(2)));
+            UT_ASSERT_NUM_EQ(s8_c(-1), get_sign(s8_c(-1)));
+            UT_ASSERT_NUM_EQ(s8_c(-1), get_sign(s8_c(-2)));
+            UT_ASSERT_NUM_EQ(s8_c(0), get_sign(s8_c(0)));
             UT_ASSERT_FLT_EQ(fmax_c(1), get_sign(fmax_c(0.0)));
             UT_ASSERT_FLT_EQ(fmax_c(-1), get_sign(fmax_c(-0.0)));
             UT_ASSERT_FLT_EQ(fmax_c(1), get_sign(fmax_c(0.1)));
@@ -141,14 +141,14 @@ UT_FUNC_GEN(test_arithmetic_base_segment) {
             UT_GROUP_END;
 
             UT_GROUP_BEG(get_exponent) {
-                UT_ASSERT_NUM_EQ(imax_c(4), get_exponent2(x));
-                UT_ASSERT_NUM_EQ(imax_c(4), get_exponent2(X));
+                UT_ASSERT_NUM_EQ(smax_c(4), get_exponent2(x));
+                UT_ASSERT_NUM_EQ(smax_c(4), get_exponent2(X));
 
-                UT_ASSERT_NUM_EQ(imax_c(12), get_exponent2(y));
-                UT_ASSERT_NUM_EQ(imax_c(12), get_exponent2(Y));
+                UT_ASSERT_NUM_EQ(smax_c(12), get_exponent2(y));
+                UT_ASSERT_NUM_EQ(smax_c(12), get_exponent2(Y));
 
-                UT_ASSERT_NUM_EQ(imax_c(16), get_exponent2(z));
-                UT_ASSERT_NUM_EQ(imax_c(16), get_exponent2(Z));
+                UT_ASSERT_NUM_EQ(smax_c(16), get_exponent2(z));
+                UT_ASSERT_NUM_EQ(smax_c(16), get_exponent2(Z));
             }
             UT_GROUP_END;
 
@@ -173,14 +173,14 @@ UT_FUNC_GEN(test_arithmetic_base_segment) {
             UT_GROUP_END;
 
             UT_GROUP_BEG(get_exponent10) {
-                UT_ASSERT_NUM_EQ(imax_c(1), get_exponent10(x));
-                UT_ASSERT_NUM_EQ(imax_c(1), get_exponent10(X));
+                UT_ASSERT_NUM_EQ(smax_c(1), get_exponent10(x));
+                UT_ASSERT_NUM_EQ(smax_c(1), get_exponent10(X));
 
-                UT_ASSERT_NUM_EQ(imax_c(3), get_exponent10(y));
-                UT_ASSERT_NUM_EQ(imax_c(3), get_exponent10(Y));
+                UT_ASSERT_NUM_EQ(smax_c(3), get_exponent10(y));
+                UT_ASSERT_NUM_EQ(smax_c(3), get_exponent10(Y));
 
-                UT_ASSERT_NUM_EQ(imax_c(4), get_exponent10(z));
-                UT_ASSERT_NUM_EQ(imax_c(4), get_exponent10(Z));
+                UT_ASSERT_NUM_EQ(smax_c(4), get_exponent10(z));
+                UT_ASSERT_NUM_EQ(smax_c(4), get_exponent10(Z));
             }
             UT_GROUP_END;
 
