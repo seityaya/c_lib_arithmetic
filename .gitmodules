@@ -1,0 +1,3 @@
+[submodule "libs/c_lib_macro"]
+	path = libs/c_lib_macro
+	url = https://github.com/seityaya/c_lib_macro.git

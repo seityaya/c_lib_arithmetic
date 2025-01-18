@@ -12,7 +12,7 @@ BEG_C_DECLARATION
 #include "malloc.h"
 
 #include "yaya_arithmetic.h"
-#include "yaya_rand.h"
+// #include "yaya_rand.h" //TODO
 
 umax_t ___gcd(umax_t u, umax_t v) {
     if (u == 0 && v == 0) {
@@ -65,7 +65,7 @@ umax_t ___isqrt(umax_t x) {
 
     umax_t r = 0;
     while (q > 1) {
-        imax_t t = 0;
+        smax_t t = 0;
         q >>= 2;
         t = x - r - q;
         r >>= 1;
@@ -289,30 +289,70 @@ umax_t ___combination(umax_t n, umax_t k, bool_t f){
 }
 
 inline char   ___abs_char(char   x){ return __to_pos(x); }
-inline is8_t  ___abs_is8 (is8_t  x){ return __to_pos(x); }
-inline is16_t ___abs_is16(is16_t x){ return __to_pos(x); }
-inline is32_t ___abs_is32(is32_t x){ return __to_pos(x); }
-inline is64_t ___abs_is64(is64_t x){ return __to_pos(x); }
+inline ss8_t ___abs_ss8(ss8_t x) { return __to_pos(x); }
+inline ss16_t ___abs_ss16(ss16_t x) { return __to_pos(x); }
+inline ss32_t ___abs_ss32(ss32_t x) { return __to_pos(x); }
+inline ss64_t ___abs_ss64(ss64_t x) { return __to_pos(x); }
 inline us8_t  ___abs_us8 (us8_t  x){ return __to_pos(x); }
 inline us16_t ___abs_us16(us16_t x){ return __to_pos(x); }
 inline us32_t ___abs_us32(us32_t x){ return __to_pos(x); }
 inline us64_t ___abs_us64(us64_t x){ return __to_pos(x); }
 
 inline char   ___pow_char(char   x, char   p){ typeof(x) __x = 1; typeof(p) __p = p; while(__p--){ __as(__x, __x * x); } return __x; }
-inline is8_t  ___pow_is8 (is8_t  x, is8_t  p){ typeof(x) __x = 1; typeof(p) __p = p; while(__p--){ __as(__x, __x * x); } return __x; }
-inline is16_t ___pow_is16(is16_t x, is16_t p){ typeof(x) __x = 1; typeof(p) __p = p; while(__p--){ __as(__x, __x * x); } return __x; }
-inline is32_t ___pow_is32(is32_t x, is32_t p){ typeof(x) __x = 1; typeof(p) __p = p; while(__p--){ __as(__x, __x * x); } return __x; }
-inline is64_t ___pow_is64(is64_t x, is64_t p){ typeof(x) __x = 1; typeof(p) __p = p; while(__p--){ __as(__x, __x * x); } return __x; }
+inline ss8_t ___pow_ss8(ss8_t x, ss8_t p) {
+    typeof(x) __x = 1;
+    typeof(p) __p = p;
+    while (__p--) {
+        __as(__x, __x * x);
+    }
+    return __x;
+}
+inline ss16_t ___pow_ss16(ss16_t x, ss16_t p) {
+    typeof(x) __x = 1;
+    typeof(p) __p = p;
+    while (__p--) {
+        __as(__x, __x * x);
+    }
+    return __x;
+}
+inline ss32_t ___pow_ss32(ss32_t x, ss32_t p) {
+    typeof(x) __x = 1;
+    typeof(p) __p = p;
+    while (__p--) {
+        __as(__x, __x * x);
+    }
+    return __x;
+}
+inline ss64_t ___pow_ss64(ss64_t x, ss64_t p) {
+    typeof(x) __x = 1;
+    typeof(p) __p = p;
+    while (__p--) {
+        __as(__x, __x * x);
+    }
+    return __x;
+}
 inline us8_t  ___pow_us8 (us8_t  x, us8_t  p){ typeof(x) __x = 1; typeof(p) __p = p; while(__p--){ __as(__x, __x * x); } return __x; }
 inline us16_t ___pow_us16(us16_t x, us16_t p){ typeof(x) __x = 1; typeof(p) __p = p; while(__p--){ __as(__x, __x * x); } return __x; }
 inline us32_t ___pow_us32(us32_t x, us32_t p){ typeof(x) __x = 1; typeof(p) __p = p; while(__p--){ __as(__x, __x * x); } return __x; }
 inline us64_t ___pow_us64(us64_t x, us64_t p){ typeof(x) __x = 1; typeof(p) __p = p; while(__p--){ __as(__x, __x * x); } return __x; }
 
 inline char   ___copysign_char(char   r, char   s){ (void)(r); return ((s) > 0) ? __to_pos(one(s)) : (((s) < 0) ? __to_neg(one(s)) : zero(s)); }
-inline is8_t  ___copysign_is8 (is8_t  r, is8_t  s){ (void)(r); return ((s) > 0) ? __to_pos(one(s)) : (((s) < 0) ? __to_neg(one(s)) : zero(s)); }
-inline is16_t ___copysign_is16(is16_t r, is16_t s){ (void)(r); return ((s) > 0) ? __to_pos(one(s)) : (((s) < 0) ? __to_neg(one(s)) : zero(s)); }
-inline is32_t ___copysign_is32(is32_t r, is32_t s){ (void)(r); return ((s) > 0) ? __to_pos(one(s)) : (((s) < 0) ? __to_neg(one(s)) : zero(s)); }
-inline is64_t ___copysign_is64(is64_t r, is64_t s){ (void)(r); return ((s) > 0) ? __to_pos(one(s)) : (((s) < 0) ? __to_neg(one(s)) : zero(s)); }
+inline ss8_t ___copysign_is8(ss8_t r, ss8_t s) {
+    (void)(r);
+    return ((s) > 0) ? __to_pos(one(s)) : (((s) < 0) ? __to_neg(one(s)) : zero(s));
+}
+inline ss16_t ___copysign_is16(ss16_t r, ss16_t s) {
+    (void)(r);
+    return ((s) > 0) ? __to_pos(one(s)) : (((s) < 0) ? __to_neg(one(s)) : zero(s));
+}
+inline ss32_t ___copysign_is32(ss32_t r, ss32_t s) {
+    (void)(r);
+    return ((s) > 0) ? __to_pos(one(s)) : (((s) < 0) ? __to_neg(one(s)) : zero(s));
+}
+inline ss64_t ___copysign_is64(ss64_t r, ss64_t s) {
+    (void)(r);
+    return ((s) > 0) ? __to_pos(one(s)) : (((s) < 0) ? __to_neg(one(s)) : zero(s));
+}
 inline us8_t  ___copysign_us8 (us8_t  r, us8_t  s){ (void)(r); return one(s); }
 inline us16_t ___copysign_us16(us16_t r, us16_t s){ (void)(r); return one(s); }
 inline us32_t ___copysign_us32(us32_t r, us32_t s){ (void)(r); return one(s); }

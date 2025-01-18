@@ -7,11 +7,9 @@
 
 cmake_minimum_required(VERSION 3.0)
 
-project(yaya_logtime_project)
-
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra  -Werror -std=gnu2x")
+project(yaya_arithmetic_project)
 
 add_subdirectory(core)
 add_subdirectory(test)
 
-add_subdirectory(libs/c_lib_testing/core/)
+add_subdirectory(libs)

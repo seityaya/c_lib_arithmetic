@@ -33,10 +33,10 @@ BEG_C_DECLARATION
 //================= ОПРЕДЕЛЕНИЕ ФУНКЦИЙ ==============================================================================================================
 
 char   ___copysign_char(char   r, char   s);
-is8_t  ___copysign_is8 (is8_t  r, is8_t  s);
-is16_t ___copysign_is16(is16_t r, is16_t s);
-is32_t ___copysign_is32(is32_t r, is32_t s);
-is64_t ___copysign_is64(is64_t r, is64_t s);
+ss8_t  ___copysign_ss8 (ss8_t  r, ss8_t  s);
+ss16_t ___copysign_ss16(ss16_t r, ss16_t s);
+ss32_t ___copysign_ss32(ss32_t r, ss32_t s);
+ss64_t ___copysign_ss64(ss64_t r, ss64_t s);
 us8_t  ___copysign_us8 (us8_t  r, us8_t  s);
 us16_t ___copysign_us16(us16_t r, us16_t s);
 us32_t ___copysign_us32(us32_t r, us32_t s);
@@ -45,10 +45,10 @@ us64_t ___copysign_us64(us64_t r, us64_t s);
 bool_t ___is_prime(umax_t x);
 
 char   ___abs_char(char   x);
-is8_t  ___abs_is8 (is8_t  x);
-is16_t ___abs_is16(is16_t x);
-is32_t ___abs_is32(is32_t x);
-is64_t ___abs_is64(is64_t x);
+ss8_t  ___abs_ss8 (ss8_t  x);
+ss16_t ___abs_ss16(ss16_t x);
+ss32_t ___abs_ss32(ss32_t x);
+ss64_t ___abs_ss64(ss64_t x);
 us8_t  ___abs_us8 (us8_t  x);
 us16_t ___abs_us16(us16_t x);
 us32_t ___abs_us32(us32_t x);
@@ -472,7 +472,7 @@ enum fp_class_e {
 #define __get_int(x)                                                                                                                                 \
     BLOCK(                                                                                                                                           \
         (__eq(base_type_sign(x), BASE_TYPE_SIGN_SIGNUM)) ?                                                                                           \
-            BLOCK(base_type_cast((x), base_type_cast(imax_t, (x)))) :                                                                                \
+            BLOCK(base_type_cast((x), base_type_cast(smax_t, (x)))) :                                                                                \
             BLOCK(base_type_cast((x), base_type_cast(umax_t, (x))))                                                                                  \
     )
 
@@ -578,7 +578,7 @@ enum fp_class_e {
 /*
  * Экспонента числа по основанию 2
  * Принимает:  Число типа floating
- * Возвращает: Тип imax_t
+ * Возвращает: Тип smax_t
 */
 #define get_exponent2(x)                                                                                                                             \
     COMPILE_ASSERT_GROUP_MATCH_1_CALC(BASE_TYPE_GROUP_FLT, (x), _x, __get_exponent2(_x))
@@ -591,7 +591,7 @@ enum fp_class_e {
             double       : frexp ,                                                                                                                   \
             long double  : frexpl,                                                                                                                   \
             default      : 0     )((x), &e);                                                                                                         \
-        base_type_cast(imax_t, e)                                                                                                                    \
+        base_type_cast(smax_t, e)                                                                                                                    \
     )
 
 /*
@@ -608,13 +608,13 @@ enum fp_class_e {
 /*
  * Экспонента числа по основанию 10
  * Принимает:  Число типа floating
- * Возвращает: Тип imax_t
+ * Возвращает: Тип smax_t
 */
 #define get_exponent10(x)                                                                                                                            \
     COMPILE_ASSERT_GROUP_MATCH_1_CALC(BASE_TYPE_GROUP_FLT, (x), _x, __get_exponent10(_x))
 
 #define __get_exponent10(x)                                                                                                                          \
-    BLOCK(__is_zero((x)) ? zero(imax_t) : base_type_cast(imax_t, __round_dn(__logm(__abs((x)), base_type_cast((x), 10.0)))))
+    BLOCK(__is_zero((x)) ? zero(smax_t) : base_type_cast(smax_t, __round_dn(__logm(__abs((x)), base_type_cast((x), 10.0)))))
 
 //================= ДОПОЛНИТЕЛЬНЫЕ МАТЕМАТИЧЕСКИЕ ОПЕРАЦИИ И ФУНКЦИИ =================================================================================
 /*
@@ -680,10 +680,10 @@ enum fp_class_e {
         base_type_cast((x),                                                                                                                          \
         _Generic(x,                                                                                                                                  \
             char                : ___abs_char,                                                                                                       \
-            is8_t               : ___abs_is8 ,                                                                                                       \
-            is16_t              : ___abs_is16,                                                                                                       \
-            is32_t              : ___abs_is32,                                                                                                       \
-            is64_t              : ___abs_is64,                                                                                                       \
+            ss8_t               : ___abs_ss8 ,                                                                                                       \
+            ss16_t              : ___abs_ss16,                                                                                                       \
+            ss32_t              : ___abs_ss32,                                                                                                       \
+            ss64_t              : ___abs_ss64,                                                                                                       \
             us8_t               : ___abs_us8 ,                                                                                                       \
             us16_t              : ___abs_us16,                                                                                                       \
             us32_t              : ___abs_us32,                                                                                                       \
@@ -982,10 +982,10 @@ umax_t ___lcm(umax_t u, umax_t v);
 //================= ОПРЕДЕЛЕНИЕ ФУНКЦИЙ ==============================================================================================================
 
 char   ___pow_char(char   x, char   p);
-is8_t  ___pow_is8 (is8_t  x, is8_t  p);
-is16_t ___pow_is16(is16_t x, is16_t p);
-is32_t ___pow_is32(is32_t x, is32_t p);
-is64_t ___pow_is64(is64_t x, is64_t p);
+ss8_t  ___pow_is8 (ss8_t  x, ss8_t  p);
+ss16_t ___pow_is16(ss16_t x, ss16_t p);
+ss32_t ___pow_is32(ss32_t x, ss32_t p);
+ss64_t ___pow_is64(ss64_t x, ss64_t p);
 us8_t  ___pow_us8 (us8_t  x, us8_t  p);
 us16_t ___pow_us16(us16_t x, us16_t p);
 us32_t ___pow_us32(us32_t x, us32_t p);
@@ -1221,7 +1221,7 @@ umax_t ___isqrt(umax_t x);
 #define __div(x, y)                                                                                                                                  \
     BLOCK(                                                                                                                                           \
         COMPILE_SIGN_CHECK(BASE_TYPE_SIGN_SIGNUM, (x))            ?                                                                                  \
-        base_type_cast((x), base_type_cast(imax_t, ((x) / (y))))  :                                                                                  \
+        base_type_cast((x), base_type_cast(smax_t, ((x) / (y))))  :                                                                                  \
         base_type_cast((x), base_type_cast(umax_t, ((x) / (y))))  )
 
 
@@ -1369,10 +1369,10 @@ umax_t ___isqrt(umax_t x);
 #define __powm(x, p) BLOCK(                                                                                                                           \
     _Generic((x),                                                                                                                                    \
     char                : _Generic((p), default : ___pow_char),                                                                                      \
-    is8_t               : _Generic((p), default : ___pow_is8 ),                                                                                      \
-    is16_t              : _Generic((p), default : ___pow_is16),                                                                                      \
-    is32_t              : _Generic((p), default : ___pow_is32),                                                                                      \
-    is64_t              : _Generic((p), default : ___pow_is64),                                                                                      \
+    ss8_t               : _Generic((p), default : ___pow_is8 ),                                                                                      \
+    ss16_t              : _Generic((p), default : ___pow_is16),                                                                                      \
+    ss32_t              : _Generic((p), default : ___pow_is32),                                                                                      \
+    ss64_t              : _Generic((p), default : ___pow_is64),                                                                                      \
     us8_t               : _Generic((p), default : ___pow_us8 ),                                                                                      \
     us16_t              : _Generic((p), default : ___pow_us16),                                                                                      \
     us32_t              : _Generic((p), default : ___pow_us32),                                                                                      \
