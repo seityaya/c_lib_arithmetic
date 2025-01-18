@@ -11,8 +11,6 @@ if(NOT TARGET yaya_macro)
       SOURCE_DIR "${CMAKE_SOURCE_DIR}/libs/c_lib_macro"
     )
     FetchContent_MakeAvailable(c_lib_macro)
-else()
-    add_subdirectory(${CMAKE_SOURCE_DIR}/libs/c_lib_macro)
 endif()
 
 if(NOT TARGET yaya_testing)
@@ -22,6 +20,4 @@ if(NOT TARGET yaya_testing)
       SOURCE_DIR "${CMAKE_SOURCE_DIR}/libs/c_lib_testing"
     )
     FetchContent_MakeAvailable(c_lib_testing)
-else()
-    add_subdirectory(${CMAKE_SOURCE_DIR}/libs/c_lib_testing)
 endif()
